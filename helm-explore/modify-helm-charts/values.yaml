@@ -1,0 +1,10 @@
+service:
+  type: ClusterIP
+replicaCount: 3
+# image section
+image:
+  repository: docker.io/aravindrio07/aravindweb
+  pullPolicy: IfNotPresent
+  #Overrides the image tag whose default is the chart appVersion
+  tag: version1
+

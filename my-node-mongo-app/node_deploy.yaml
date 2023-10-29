@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: arvind-node
+  name: arvind-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arvind-node
+  strategy: {}
+  template: # to create pods
+    metadata:
+      creationTimestamp: null
+      labels: # label of all the pods
+        app: arvind-node
+    spec:
+      imagePullSecrets: # calling secret
+      - name: arvind-reg-cred # name of secret
+      containers: 
+      - image: extoaksashu.azurecr.io/node-app:v1 # from ACR
+        name: node-app
+        ports:
+        - containerPort: 3000
+        resources: 
+          requests:
+            memory: 50M # min RAM to start Pod
+            cpu: 20m # milicore
+          limits:
+            memory: 300M
+            cpu: 100m 
+
+status: {}

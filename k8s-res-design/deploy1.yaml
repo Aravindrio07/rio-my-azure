@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels: # all the elements which i want my pod
+    app: arvind-deploy1
+  name: arvind-deploy1  # name of the deployment
+spec:
+  replicas: 1  # number of pod
+  selector:
+    matchLabels:
+      app: arvind-deploy1
+  strategy: {}
+  template: #to create pod use template
+    metadata:
+      creationTimestamp: null
+      labels: # all the pods by this deploy will have below label
+        app: arvind-deploy1
+    spec: # app spec section 
+      containers:
+      - image: aravindrio07/aravindweb:version1
+        name: aravindweb
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

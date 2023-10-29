@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: arvind-mongo
+  name: arvind-mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arvind-mongo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: arvind-mongo
+    spec:
+      containers:
+      - image: mongo
+        name: mongo
+        ports:
+        - containerPort: 27017
+        env: #to create / pass ENV variable info
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom: # reading from somewhere
+            secretKeyRef: 
+              name: arvind-db-cred
+              key: my-user # Corrected the capitalization of "key"
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: arvind-db-cred
+              key: my-password # Corrected the capitalization of "key"
+        resources: {}
+

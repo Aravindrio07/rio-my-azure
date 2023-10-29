@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: arvind-mongo
+  name: arvind-mongo-lb
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    app: arvind-mongo
+  type: ClusterIP
+status:
+  loadBalancer: {}

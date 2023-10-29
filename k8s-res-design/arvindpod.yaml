@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: arvindpod1 # name of my pod
+spec: # all the elements which i want in my pod
+  containers: # here we write info about our containers
+  - name: arvind2
+    image: alpine
+    command: ['sleep','1200'] #.to.modify.existing.cmd/ENTRYPOINT.by.dockerfile.
+  - name: arvind1
+    image: aravindrio07/aravindweb:version1 # image from docker hub
+    ports: # optional part
+    - containerPort: 80

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  my-password: cmlvMDc=
+  my-user: YXJ2aW5k
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: arvind-db-cred
